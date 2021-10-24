@@ -82,3 +82,30 @@ function palindrome2(word){
     }
     return true;
 }
+
+/* Палиндром с мусором в строке.
+   Встречаю мусор (все, что не буквы латиницы) - переставляю указатель 
+   наткнувшийся на хлам.
+   Сложность O(n/2)
+ */
+
+function isPalindrome(str){
+    let l = 0,
+        r = str.length - 1;
+    
+    while(l < r){
+        if(str.charCodeAt(l) < 65 || str.charCodeAt(l) > 122){
+            l++;
+            continue;
+        }
+        if(str.charCodeAt(r) < 65 || str.charCodeAt(r) > 122){
+            r++;
+            continue;
+        }
+        if(str[l].toLowerCase() !== str[r].toLowerCase())
+            return false;
+        l++;
+        r--;
+    }
+    return true;
+}
