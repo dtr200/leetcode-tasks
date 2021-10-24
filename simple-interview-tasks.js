@@ -109,3 +109,38 @@ function isPalindrome(str){
     }
     return true;
 }
+
+/*
+    Разворот строки за O(n/2)
+*/
+
+function reverse(str){
+    let l = 0,
+        r = str.length - 1;
+    const newStr = str.split('');
+    while(l < r){
+        [ newStr[l], newStr[r] ] = [ newStr[r], newStr[l] ];
+        l++;
+        r--;
+    }
+    return newStr.join('')
+}
+
+/*
+    Разворот строки за O(n)
+*/
+
+function reverse2(str){    
+    const result = ''
+    for(let i = str.length - 1; i <= 0; i--)
+        result += str[i];
+    return result;
+}
+
+/*
+    Разворот строки за O(3n)
+*/
+
+function reverse3(str){    
+    return [...str].reverse().join('');
+}
