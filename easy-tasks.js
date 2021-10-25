@@ -50,3 +50,27 @@ MinStack.prototype.top = function() {
 MinStack.prototype.getMin = function() {
     return this.items.slice(-1)[0].min;
 };
+
+/*
+9. Palindrome Number
+Given an integer x, return true if x is palindrome integer.
+
+An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
+*/
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+ var isPalindrome = function(x) {
+    const str = String(x);
+    let l = 0,
+        r = str.length -1;
+    while(l < r){
+        if(str[l] !== str[r])
+            return false;
+        l++;
+        r--;
+    }
+    return true;
+};
