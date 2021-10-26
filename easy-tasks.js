@@ -145,3 +145,31 @@ Given a roman numeral, convert it to an integer.
     }
     return result;
 };
+
+/*
+14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Time complexity - O(N * L), L - shortest string length, N - numbers of strings
+*/
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+ var longestCommonPrefix = function(strs) {
+    let shortest = strs[0];
+    for(let i = 1; i < strs.length; i++){
+        if(strs[i].length < shortest.length)
+            shortest = strs[i];
+    }
+    let result = '';
+    for(let i = 0; i < shortest.length; i++){
+        for(let j = 0; j < strs.length; j++){
+            if(strs[j][i] !== shortest[i])
+                return result;
+        }       
+        result += shortest[i];
+    }
+    return result;
+};
