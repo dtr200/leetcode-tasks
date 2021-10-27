@@ -275,3 +275,58 @@ Memory complexity - O(1).
     
     return nums[l] === val ? l : l + 1;
 };
+
+/*
+28. Implement strStr()
+Implement strStr().
+
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Clarification:
+
+What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is an empty string.
+*/
+
+
+/* Slow solution 
+Time complexity - O(N * M), N - haystack length, M - needle length.
+Memory complexity - O(1).
+*/
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+ var strStr = function(haystack, needle) {
+    if(haystack === '' && needle === '') 
+        return 0;
+    
+    for(let i = 0; i < haystack.length; i++){
+        let t = i,
+            j = 0;
+        while(j < needle.length){
+            if(haystack[t] === needle[j]){
+                t++;
+                j++;
+            }
+            else break;
+        }
+        if(j === needle.length) return i;
+    }    
+    return -1;
+};
+
+/*
+    Fast solution
+Time complexity - O(N), N - haystack length.
+Memory complexity - O(N).
+*/
+var strStr = function(haystack, needle) {
+    if(!needle.length)
+        return 0;
+    
+    const splitted = haystack.split(needle);
+    return splitted.length > 1 ? splitted[0].length : -1;
+};
