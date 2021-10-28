@@ -463,6 +463,7 @@ var addBinary = function(a, b) {
 Given a non-negative integer x, compute and return the square root of x.
 Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.
 Note: You are not allowed to use any built-in exponent function or operator, such as pow(x, 0.5) or x ** 0.5.
+
 Time complexity - O(1).
 Memory complexity - O(1).
 */
@@ -473,4 +474,29 @@ Memory complexity - O(1).
  */
  var mySqrt = function(x) {
     return Math.floor(Math.sqrt(x));
+};
+
+/*
+70. Climbing Stairs
+
+You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Time complexity - O(n).
+Memory complexity - O(n).
+*/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+ var climbStairs = function(n) {
+    const dp = new Array(n);
+    dp[0] = 1;
+    dp[1] = 2;
+    
+    for(let i = 2; i < n; i++)
+        dp[i] = dp[i - 1] + dp[i - 2];
+    
+    return dp[n - 1];
 };
