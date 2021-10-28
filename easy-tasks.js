@@ -445,3 +445,15 @@ Memory complexity - O(1).
 var plusOne = function(digits) {
     return String(BigInt(digits.join('')) + BigInt(1)).split('');
 };
+
+/*
+67. Add Binary
+Given two binary strings a and b, return their sum as a binary string.
+
+Time complexity - O(n).
+Memory complexity - O(1).
+*/
+
+var addBinary = function(a, b) {
+    return (BigInt(`0b${a}`) + BigInt(`0b${b}`)).toString(2)
+};
