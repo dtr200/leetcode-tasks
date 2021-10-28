@@ -330,3 +330,33 @@ var strStr = function(haystack, needle) {
     const splitted = haystack.split(needle);
     return splitted.length > 1 ? splitted[0].length : -1;
 };
+
+/*
+35. Search Insert Position
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Time complexity - O(log n).
+Memory complexity - O(1).
+*/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+ var searchInsert = function(nums, target) {
+    let l = -1,
+        r = nums.length;
+    while(r - l > 1){
+        const mid = Math.floor((l + r)/2);
+        if(nums[mid] === target)
+            return mid;
+        if(nums[mid] > target)
+            r = mid;
+        else
+            l = mid;
+    }
+    return r;
+};
