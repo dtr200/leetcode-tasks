@@ -360,3 +360,28 @@ Memory complexity - O(1).
     }
     return r;
 };
+
+/*
+53. Maximum Subarray
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+A subarray is a contiguous part of an array.
+Time complexity - O(n).
+Memory complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var maxSubArray = function(nums) {
+    const dp = [nums[0]];
+    let max = dp[0];
+    
+    for(let i = 1; i < nums.length; i++){
+        dp.push(Math.max(dp[i - 1] + nums[i], nums[i]));
+        if(dp[i] > max)
+            max = dp[i];
+    }
+    return max;
+};
