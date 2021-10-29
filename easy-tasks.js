@@ -500,3 +500,36 @@ Memory complexity - O(n).
     
     return dp[n - 1];
 };
+
+/*
+83. Remove Duplicates from Sorted List
+
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+Time complexity - O(n).
+Memory complexity - O(1).
+*/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ var deleteDuplicates = function(head) {
+    let prev = head,
+        next;
+    while(prev !== null && prev.next !== null){
+        next = prev.next;
+        while(next !== null && prev.val === next.val)
+            next = next.next;
+        prev.next = next;
+        prev = prev.next;
+    }
+    return head;
+};
