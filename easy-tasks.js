@@ -533,3 +533,37 @@ Memory complexity - O(1).
     }
     return head;
 };
+
+/*
+168. Excel Sheet Column Title
+Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+
+For example:
+
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+
+Time complexity - O(log n).
+Memory complexity - O(1).
+*/
+
+/**
+ * @param {number} columnNumber
+ * @return {string}
+ */
+ var convertToTitle = function(columnNumber) {
+    let result = '';
+    while(columnNumber > 0){
+        let sym = columnNumber % 26;        
+        if(sym === 0)
+            sym = 26;
+        result = String.fromCharCode(sym + 64) + result;
+        columnNumber = (columnNumber - sym)/26;
+    } 
+    return result;
+};
