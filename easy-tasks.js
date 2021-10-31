@@ -653,6 +653,47 @@ Memory complexity - O(1).
 };
 
 /*
+125. Valid Palindrome
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+Time complexity - O(n).
+Memory complexity - O(1).
+*/
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+ var isPalindrome = function(s) {
+    let l = 0,
+        r = s.length - 1;
+    
+    while(l < r){
+        
+        while(l < r && ((s[l].charCodeAt() < 48) ||
+              (s[l].charCodeAt() > 57 && s[l].charCodeAt() < 65) || 
+              (s[l].charCodeAt() > 90 && s[l].charCodeAt() < 97) ||
+              (s[l].charCodeAt() > 122))){
+            l++;
+        }
+        while(l < r && ((s[r].charCodeAt() < 48) ||
+              (s[r].charCodeAt() > 57 && s[r].charCodeAt() < 65) || 
+              (s[r].charCodeAt() > 90 && s[r].charCodeAt() < 97) ||
+              (s[r].charCodeAt() > 122))){
+            r--;
+        }
+        if(s[l].toLowerCase() !== s[r].toLowerCase()){
+            return false;
+        }
+        r--;
+        l++;
+    }
+    return true;
+};
+
+/*
 168. Excel Sheet Column Title
 Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
 
