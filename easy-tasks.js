@@ -693,6 +693,27 @@ Memory complexity - O(1).
     return true;
 };
 
+// bit more simplified solution
+
+var isPalindrome = function(s) {
+    const normalized = [];
+    for(let i = 0; i < s.length; i++){
+        if((s[i].charCodeAt() >= 48 && s[i].charCodeAt() <= 57) ||
+          (s[i].charCodeAt() >= 65 && s[i].charCodeAt() <= 90) ||
+          (s[i].charCodeAt() >= 97 && s[i].charCodeAt() <= 122))
+            normalized.push(s[i].toLowerCase());
+    }
+    let l = 0,
+        r = normalized.length - 1;
+    while(l < r){
+        if(normalized[l] !== normalized[r])
+            return false;
+        l++;
+        r--;
+    }
+    return true;
+};
+
 /*
 168. Excel Sheet Column Title
 Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
