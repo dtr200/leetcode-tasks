@@ -560,6 +560,38 @@ Memory complexity - O(1).
     nums1.sort((a, b) => a - b);
 };
 
+/*
+94. Binary Tree Inorder Traversal
+Given the root of a binary tree, return the inorder traversal of its nodes' values.
+Time complexity - O(n + m), n - nodes, m - edges.
+Memory complexity - O(n).
+*/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+ var inorderTraversal = function(root) {
+    if(!root || !root.val) return [];
+    const result = [];
+    const rec = (root) => { 
+        if(root.left)
+            rec(root.left);
+        result.push(root.val);
+        if(root.right)
+           rec(root.right);
+    }
+    rec(root);
+    return result;
+};
 
 /*
 168. Excel Sheet Column Title
