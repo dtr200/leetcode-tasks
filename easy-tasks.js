@@ -653,6 +653,44 @@ Memory complexity - O(1).
 };
 
 /*
+104. Maximum Depth of Binary Tree
+Given the root of a binary tree, return its maximum depth.
+
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+Time complexity - O(n).
+Memory complexity - O(n).
+*/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+ var maxDepth = function(root) {
+    if(root === null) return 0;
+       
+    function calcDepth (vertex, num){
+        if(vertex.left === null && vertex.right === null)
+            return num;
+        
+        if(vertex.left && vertex.right)
+            return Math.max(calcDepth(vertex.left, num + 1), calcDepth(vertex.right, num + 1));
+        else if(vertex.left)
+            return calcDepth(vertex.left, num + 1);
+        else
+            return calcDepth(vertex.right, num + 1);
+    }
+    return calcDepth(root, 1);
+};
+
+/*
 125. Valid Palindrome
 A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 
