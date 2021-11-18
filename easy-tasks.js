@@ -763,3 +763,26 @@ Memory complexity - O(1).
  var containsDuplicate = function(nums) {
     return !(Array.from(new Set(nums)).length === nums.length);
 };
+
+/*
+448. Find All Numbers Disappeared in an Array
+Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+
+Time complexity - O(n).
+Memory complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var findDisappearedNumbers = function(nums) {
+    const result = [];
+    const map = {};
+    nums.forEach(num => map[num] = true);
+    for(let i = 1; i <= nums.length; i++){
+        if(!map[i])
+            result.push(i);
+    }
+    return result;
+};
