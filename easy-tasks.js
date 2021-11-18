@@ -753,6 +753,49 @@ var isPalindrome = function(s) {
 };
 
 /*
+167. Two Sum II - Input Array Is Sorted
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+Time complexity - O(n log n).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+ var twoSum = function(numbers, target) {    
+    const search = (num) => {
+        let left = -1,
+            right = numbers.length;
+        
+        while(right - left > 1){
+            const mid = Math.floor((right + left)/2);
+            if(num === numbers[mid])
+                return mid;
+            if(num > numbers[mid])
+                left = mid;
+            else if(num < numbers[mid])
+                right = mid;
+        }
+        return -1;
+    }
+    
+    for(let i = 0; i < numbers.length; i++){
+        const secondNum = target - numbers[i];
+        const secondPos = search(secondNum);
+        if(secondPos !== -1 && secondPos !== i)
+            return secondPos > i ? 
+                [i + 1, secondPos + 1] : [secondPos + 1, i + 1];
+    }
+};
+
+/*
 168. Excel Sheet Column Title
 Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
 
