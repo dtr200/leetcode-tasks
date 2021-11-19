@@ -753,6 +753,49 @@ var isPalindrome = function(s) {
 };
 
 /*
+160. Intersection of Two Linked Lists
+Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+
+Time complexity - O(n).
+Space complexity - O(1).
+*/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ */
+ var getIntersectionNode = function(headA, headB) {
+    if(headA === null || headB === null)
+        return null;
+    
+    let currentA = headA,
+        currentB = headB;
+    
+    while(currentA !== currentB){
+        currentA = currentA.next;
+        currentB = currentB.next;
+        
+        if(currentA === currentB)
+            return currentA;
+        if(currentA === null)
+            currentA = headB;
+        if(currentB === null)
+            currentB = headA;        
+    }
+    return currentA;
+};
+
+
+/*
 167. Two Sum II - Input Array Is Sorted
 Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
 
