@@ -949,6 +949,42 @@ Space complexity - O(n).
 };
 
 /*
+206. Reverse Linked List
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+Time complexity - O(n).
+Space complexity - O(1).
+*/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+ var reverseList = function(head) {
+    if(head === null) return head;
+    
+    let root = head,
+        prev = null,
+        next;
+    
+    while(root){        
+        next = root.next;
+        root.next = prev;
+        prev = root;
+        root = next;
+    }
+    return prev;
+};
+
+
+/*
 217. Contains Duplicate
 Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
