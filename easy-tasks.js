@@ -1039,6 +1039,26 @@ Memory complexity - O(1).
 };
 
 /*
+231. Power of Two
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+Time complexity - O(n).
+Memory complexity - O(1).
+*/
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+ var isPowerOfTwo = function(n) {
+    if(n === 0) return false;
+    while(n % 2 === 0)
+        n = n/2;
+    return n === 1;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
