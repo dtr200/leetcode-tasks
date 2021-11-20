@@ -949,6 +949,44 @@ Space complexity - O(n).
 };
 
 /*
+203. Remove Linked List Elements
+Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+Time complexity - O(n).
+Space complexity - O(1).
+*/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+ var removeElements = function(head, val) {
+    let prev, 
+        node = head;
+    
+    while(head){
+        if(head.val === val){
+            prev ? 
+                prev.next = head.next : 
+                node = head.next;
+        }
+        else{
+            prev = head;
+        }
+        head = head.next;
+    }
+    return node;
+};
+
+
+/*
 206. Reverse Linked List
 Given the head of a singly linked list, reverse the list, and return the reversed list.
 
