@@ -1189,6 +1189,28 @@ Memory complexity - O(1).
 
 // Second solution
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+ var deleteNode = function(node) {
+    let current = node,
+        prev = current;
+    
+    while(current.next !== null){
+        current.val = current.next.val;
+        prev = current;
+        current = current.next;
+    }
+    prev.next = null;
+};
 
 /*
 448. Find All Numbers Disappeared in an Array
