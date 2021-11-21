@@ -1118,6 +1118,49 @@ Memory complexity - O(1).
 };
 
 /*
+234. Palindrome Linked List
+Given the head of a singly linked list, return true if it is a palindrome.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+ var isPalindrome = function(head) {
+    let toTail = '',
+        toHead = '';
+    
+    let prev = null,
+        next,
+        root = head;
+    while(root){
+        toTail += root.val;
+        next = root.next; 
+        root.next = prev;
+        prev = root;
+        root = next;
+    }
+    
+    [ prev, root ] = [ root, prev ];
+    while(root){
+        toHead += root.val;
+        root = root.next;
+    }
+    
+    return toTail === toHead;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
