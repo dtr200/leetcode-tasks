@@ -1161,6 +1161,36 @@ Space complexity - O(n).
 };
 
 /*
+237. Delete Node in a Linked List
+Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.
+
+It is guaranteed that the node to be deleted is not a tail node in the list.
+
+Time complexity - O(n).
+Memory complexity - O(1).
+*/
+
+// First solution
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+ var deleteNode = function(node) {
+    Object.assign(node, node.next)
+};
+
+// Second solution
+
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
