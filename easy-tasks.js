@@ -1039,6 +1039,49 @@ Memory complexity - O(1).
 };
 
 /*
+228. Summary Ranges
+You are given a sorted unique integer array nums.
+
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums
+ * @return {string[]}
+ */
+ var summaryRanges = function(nums) {
+    const result = [];
+    if(!nums.length)
+        return nums;
+    
+    if(nums.length === 1){
+        result.push(`${nums[0]}`);
+        return result;
+    } 
+           
+    
+    let start = nums[0], 
+        prev = nums[0];
+    
+    for(let i = 1; i < nums.length; i++){
+        if(nums[i] - prev > 1){            
+            prev === start ? result.push(`${prev}`) : 
+                result.push(`${start}->${prev}`);
+            start = nums[i];
+        }
+        prev = nums[i];
+    }
+    
+    if(result[result.length - 1] !== nums[nums.length - 1])
+        prev === start ? result.push(`${prev}`) : 
+                result.push(`${start}->${prev}`);
+    return result;
+};
+
+/*
 231. Power of Two
 Given an integer n, return true if it is a power of two. Otherwise, return false.
 
