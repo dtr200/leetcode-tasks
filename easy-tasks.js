@@ -753,6 +753,32 @@ var isPalindrome = function(s) {
 };
 
 /*
+136. Single Number
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var singleNumber = function(nums) {
+    const s = new Set();
+    nums.forEach(num => {
+        if(s.has(num))
+            s.delete(num);
+        else
+            s.add(num);
+    })
+    
+    return Array.from(s)[0];
+};
+
+/*
 160. Intersection of Two Linked Lists
 Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
 
