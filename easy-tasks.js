@@ -1104,11 +1104,13 @@ Memory complexity - O(1).
 /*
 219. Contains Duplicate II
 Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
-
-Time complexity - O(n * k).
-Space complexity - O(1).
 */
 
+/*
+    First solution
+    Time complexity - O(n * k).
+    Space complexity - O(1).
+*/
 /**
  * @param {number[]} nums
  * @param {number} k
@@ -1121,6 +1123,25 @@ Space complexity - O(1).
                 return true;
         }
     }
+    return false;
+};
+
+/*
+    Second solution
+    Time complexity - O(n).
+    Space complexity - O(n).
+*/
+
+var containsNearbyDuplicate = function(nums, k) {
+    const dict = {};
+    
+    for(let i = 0; i < nums.length; i++){        
+        if(dict[nums[i]] !== undefined && i - dict[nums[i]] <= k)
+            return true;
+        else
+            dict[nums[i]] = i;
+    };
+    
     return false;
 };
 
