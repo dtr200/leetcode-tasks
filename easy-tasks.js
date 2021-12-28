@@ -1336,6 +1336,32 @@ Space complexity - O(1).
 };
 
 /*
+258. Add Digits
+Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+*/
+
+/* First solution
+Time complexity - O(n**2).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+ var addDigits = function(num) {
+    if(num < 10) return num;
+    
+    while(num >= 10){
+        num = String(num)
+            .split('')
+            .reduce((accum, num) => 
+                accum + Number(num), 0)
+    }
+    return num;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
