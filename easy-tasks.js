@@ -1320,6 +1320,22 @@ Memory complexity - O(1).
 };
 
 /*
+242. Valid Anagram
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Time complexity - O(n log n).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+ var isAnagram = function(s, t) {
+    return s.split('').sort().join('') === t.split('').sort().join('');
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
