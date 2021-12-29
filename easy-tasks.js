@@ -1403,6 +1403,20 @@ Space complexity - O(1).
     }
 };
 
+// Bit faster with Set
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var missingNumber = function(nums) {
+    const s = new Set(nums);
+    for(let i = 0; i <= nums.length; i++){
+        if(!s.has(i))
+            return i;
+    }
+};
+
 /*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
