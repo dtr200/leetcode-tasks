@@ -1386,6 +1386,24 @@ Space complexity - O(1).
 };
 
 /*
+268. Missing Number
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+Time complexity - O(n**2).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var missingNumber = function(nums) {
+    for(let i = 0; i <= nums.length; i++){
+        if(!nums.includes(i))
+            return i;
+    }
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
