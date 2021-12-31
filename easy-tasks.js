@@ -1418,6 +1418,41 @@ Space complexity - O(1).
 };
 
 /*
+290. Word Pattern
+Given a pattern and a string s, find if s follows the same pattern.
+
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+ var wordPattern = function(pattern, s) {
+    const dict = {};
+    const revDict = {}
+    const str = s.split(' ');
+    if(pattern.length !== str.length) return false;
+    for(let i = 0; i < pattern.length; i++){
+        if(!dict[pattern[i]])
+            dict[pattern[i]] = str[i];
+        else if(dict[pattern[i]] && dict[pattern[i]] !== str[i])
+            return false;
+    };
+    const p = pattern.split('');
+    for(let i = 0; i < str.length; i++){
+        if(!revDict[str[i]])
+            revDict[str[i]] = p[i];
+        else if(revDict[str[i]] && revDict[str[i]] !== p[i])
+            return false;
+    }
+    return true;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
