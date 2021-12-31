@@ -1503,6 +1503,29 @@ var isPowerOfFour = function(n) {
 };
 
 /*
+344. Reverse String
+Write a function that reverses a string. The input string is given as an array of characters s.
+You must do this by modifying the input array in-place with O(1) extra memory.
+Time complexity - O(n).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+ var reverseString = function(s) {
+    let left = 0,
+        right = s.length - 1;
+    
+    while(left <= right){
+        [s[left], s[right]] = [s[right], s[left]];
+        left++;
+        right--;
+    }
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
