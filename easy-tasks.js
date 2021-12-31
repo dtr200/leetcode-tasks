@@ -1489,6 +1489,20 @@ Memory complexity - O(1).
 };
 
 /*
+342. Power of Four
+Given an integer n, return true if it is a power of four. Otherwise, return false.
+An integer n is a power of four, if there exists an integer x such that n == 4x.
+Time complexity - O(1).
+Memory complexity - O(1).
+*/
+
+var isPowerOfFour = function(n) {
+    if(n === 0) return false;
+    
+    return Number.isInteger(Math.log10(n)/Math.log10(4))
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
