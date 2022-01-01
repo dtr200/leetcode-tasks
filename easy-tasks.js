@@ -1526,6 +1526,48 @@ Space complexity - O(1).
 };
 
 /*
+345. Reverse Vowels of a String
+Given a string s, reverse only all the vowels in the string and return it.
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+ var reverseVowels = function(s) {
+    const vowels = {
+        'a': true,
+        'e': true,
+        'i': true,
+        'o': true,
+        'u': true,
+        'A': true,
+        'E': true,
+        'I': true,
+        'O': true,
+        'U': true
+    };
+    const str = s.split('');
+    let left = 0,
+        right = str.length - 1;    
+    while(left < right){
+        while(!vowels[str[left]] && left < right)
+            left++;
+        while(!vowels[str[right]] && left < right)
+            right--;
+        [str[left], str[right]] = [str[right], str[left]];
+        left++;
+        right--;
+    }
+    
+    return str.join('');
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
