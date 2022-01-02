@@ -1602,6 +1602,37 @@ Space complexity - O(n).
 };
 
 /*
+Bit faster one
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+ var intersection = function(nums1, nums2) {
+    const map = new Map();
+    
+    nums1.forEach(num => {
+        if(!map.has(num))
+            map.set(num, true);
+    })
+    
+    const result = [];
+    
+    nums2.forEach(num => {
+        if(map.has(num)){
+            result.push(num); 
+            map.delete(num);
+        }            
+    });
+    
+    return result;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
