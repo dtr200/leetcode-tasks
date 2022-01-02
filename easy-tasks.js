@@ -1573,7 +1573,7 @@ Space complexity - O(n).
 Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
 
 Time complexity - O(n**2).
-Space complexity - O(1).
+Space complexity - O(n).
 */
 
 /**
@@ -1583,6 +1583,22 @@ Space complexity - O(1).
  */
  var intersection = function(nums1, nums2) {
     return Array.from(new Set(nums1.filter(num => nums2.includes(num))));
+};
+
+/* Another slow solution
+Time complexity - O(n**2).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+ var intersection = function(nums1, nums2) {
+    const uniqNums1 = new Set(nums1);
+    
+    return nums2.filter(num => uniqNums1.delete(num))
 };
 
 /*
