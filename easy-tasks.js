@@ -1633,6 +1633,47 @@ Space complexity - O(n).
 };
 
 /*
+350. Intersection of Two Arrays II
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+ var intersect = function(nums1, nums2) {
+    const map = new Map();
+    nums1.forEach(num => {
+        if(!map.has(num)){
+            map.set(num, 1);
+            return;
+        }
+        if(map.has(num)){
+            map.set(num, map.get(num) + 1);
+            return;
+        }
+    });
+    
+    const result = [];
+    
+    nums2.forEach(num => {
+        if(map.has(num)){
+            result.push(num);
+            const val = map.get(num);
+            val === 1 ? 
+                map.delete(num) : 
+                map.set(num, val - 1);            
+        }
+    });
+    
+    return result;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
