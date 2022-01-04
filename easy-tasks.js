@@ -1696,6 +1696,39 @@ Space complexity - O(1).
 };
 
 /*
+383. Ransom Note
+Given two stings ransomNote and magazine, return true if ransomNote can be constructed from magazine and false otherwise.
+Each letter in magazine can only be used once in ransomNote.
+
+Time complexity - O(n).
+Space complexity - O(n).
+*/
+
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+ var canConstruct = function(ransomNote, magazine) {
+    const map = {};
+    
+    for(let i = 0; i < magazine.length; i++){
+        map[magazine[i]] ?
+            map[magazine[i]]++ :
+            map[magazine[i]] = 1;
+    };
+    
+    for(let i = 0; i < ransomNote.length; i++){
+        if(!map[ransomNote[i]])
+            return false;
+        else
+            map[ransomNote[i]]--;
+    }
+    
+    return true;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
