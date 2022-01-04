@@ -1674,6 +1674,28 @@ Space complexity - O(n).
 };
 
 /*
+367. Valid Perfect Square
+Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+Time complexity - O(n).
+Space complexity - O(1).
+*/
+
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+ var isPerfectSquare = function(num) {
+    let i = 0;
+    while(i * i <= num){
+        if(i * i === num) return true;
+        i++;
+    }
+    
+    return false;
+};
+
+/*
 448. Find All Numbers Disappeared in an Array
 Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
 
